@@ -3,24 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Post Form</title>
+    <title>Dynamic Post Form with Radio Buttons</title>
     <script>
         function updateFormAction() {
-            const url = document.getElementById('post-url').value;
+            const selectedUrl = document.querySelector('input[name="url"]:checked').value;
             const form = document.getElementById('dynamic-form');
-            form.action = url;
+            form.action = selectedUrl;
         }
     </script>
 </head>
 <body>
 
-    <h1>Dynamic Post Form</h1>
+    <h1>Dynamic Post Form with Radio Buttons</h1>
 
-    <!-- Input box for entering the URL -->
-    <label for="post-url">Enter the URL to post to:</label>
-    <input type="text" id="post-url" placeholder="Enter URL here" oninput="updateFormAction()">
+    <!-- Radio buttons for selecting the URL -->
+    <fieldset>
+        <legend>Select the URL to post to:</legend>
 
-    <!-- Form that will post to the entered URL -->
+        <input type="radio" id="url1" name="url" value="https://example.com/submit1" onclick="updateFormAction()">
+        <label for="url1">https://example.com/submit1</label><br>
+
+        <input type="radio" id="url2" name="url" value="https://example.com/submit2" onclick="updateFormAction()">
+        <label for="url2">https://example.com/submit2</label><br>
+
+        <input type="radio" id="url3" name="url" value="https://example.com/submit3" onclick="updateFormAction()">
+        <label for="url3">https://example.com/submit3</label><br>
+    </fieldset>
+
+    <!-- Form that will post to the selected URL -->
     <form id="dynamic-form" method="POST">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name">
